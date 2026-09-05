@@ -1,2 +1,11 @@
 # hpo-gene-prioritization
-Phenotype-driven gene prioritization using HPO semantic similarity.
+
+Phenotype-driven gene prioritization for rare genetic diseases using HPO semantic similarity.
+
+## Documentation
+
+- [Specification Document](documentation/specification.md)
+
+## Weekly Reports
+
+- [Weekly Report 1](documentation/weekly_report_1.md)
