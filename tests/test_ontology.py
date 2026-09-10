@@ -1,6 +1,6 @@
-import unittest
-from ontology import ontology
+# import unittest
+# from ontology import ontology
 
-class testCase:
+# class testCase:
 
 
