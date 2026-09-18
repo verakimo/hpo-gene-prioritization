@@ -1,12 +1,12 @@
-toy_parents = {
+ancestor_cache = {}
+
+TOY_PARENTS = {
     "ROOT": set(),
     "A": {"ROOT"},
     "B": {"ROOT"},
     "C": {"A"},
     "D": {"A", "B"}
 }
-
-ancestor_cache = {}
 
 def dfs(node, visited):
     """Traverses the graph from the given HPO term to its parents 
@@ -15,12 +15,13 @@ def dfs(node, visited):
     Args:
         node: The HPO term from which the current DFS step begins.
         visited: A set of HPO terms that have already been visited.
+        parents: Dictionary mapping each HPO term to its parent/parents.
     """
     if node in visited:
         return
     visited.add(node)
 
-    for next_node in toy_parents[node]:
+    for next_node in TOY_PARENTS[node]:
         dfs(next_node, visited)
 
 
@@ -30,6 +31,7 @@ def ancestors(term):
 
     Args:
         term: The HPO term for which ancestors are being sought.
+        parents: Dictionary mapping each HPO term to its parent/parents.
 
     Returns:
         A set containing the term itself and all its ancestors.

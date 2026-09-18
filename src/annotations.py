@@ -1,11 +1,5 @@
 from ontology import ancestors
 
-toy_gene_annotations = {
-    "g1": {"C"},
-    "g2": {"D"},
-    "g3": {"B"}
-}
-
 def annotation(data, gene):
     """Propagates the direct HPO annotations of a given gene.
     For each HPO term, finds the ancestor-or-self set.

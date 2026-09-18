@@ -2,18 +2,18 @@ import unittest
 
 from annotations import propagation
 
-test_gene_annotations = {
+TEST_GENE_ANNOTATIONS = {
     "g1": {"C"},
     "g2": {"D"},
     "g3": {"B"},
     "g_test": {"C", "D"}
 }
 
-empty_dataset = {}
+EMPTY_DATASET = {}
 
 class TestPropagation(unittest.TestCase):
     def test_general_dataset(self):
-        actual = propagation(test_gene_annotations)
+        actual = propagation(TEST_GENE_ANNOTATIONS)
         expected = {
             "g1": {"C", "A", "ROOT"},
             "g2": {"D", "A", "B", "ROOT"},
@@ -23,6 +23,6 @@ class TestPropagation(unittest.TestCase):
         self.assertEqual(actual, expected)
 
     def test_empty_dataset(self):
-        actual = propagation(empty_dataset)
+        actual = propagation(EMPTY_DATASET)
         expected = {}
         self.assertEqual(actual, expected)

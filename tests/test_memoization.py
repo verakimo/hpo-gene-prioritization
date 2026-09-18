@@ -2,6 +2,14 @@ import unittest
 
 from ontology import ancestors, ancestor_cache
 
+TOY_PARENTS = {
+    "ROOT": set(),
+    "A": {"ROOT"},
+    "B": {"ROOT"},
+    "C": {"A"},
+    "D": {"A", "B"}
+}
+
 class TestMemoization(unittest.TestCase):
     def test_ancestor_cache(self):
         ancestor_cache.clear()
