@@ -2,6 +2,8 @@
 __pycache__/
 *.py[codz]
 *$py.class
+data/hp.obo
+data/genes_to_phenotype.txt
 
 # C extensions
 *.so
