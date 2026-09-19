@@ -55,9 +55,3 @@ Example input:
     HP:0002460 HP:0002451
 
 The program ranks genes according to phenotype-profile semantic similarity and displays the top gene candidates together with their similarity scores, direct HPO annotations, and exact matches with the input phenotype terms.
-
-## Documentation
-
-- [Requirement specification](documentation/vaatimusmaarittely.md)
-- [Testing document](documentation/testausdokumentti.md)
-- [Weekly report 3](documentation/weekly_report_3.md)
