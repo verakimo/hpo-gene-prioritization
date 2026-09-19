@@ -1,6 +1,7 @@
 import unittest
 
 from profile_similarity import symmetric_bma
+from ontology import Ontology
 
 PATIENT_TOY_PHENOTYPE_PROFILE = {"C", "B"}
 GENE_TOY_PHENOTYPE_PROFILE = {"D", "A"}
@@ -16,12 +17,24 @@ IC_VALUES = {
     'B': 0.5849625007211563
     }
 
+TOY_PARENTS = {
+    "ROOT": set(),
+    "A": {"ROOT"},
+    "B": {"ROOT"},
+    "C": {"A"},
+    "D": {"A", "B"}
+}
+
 class TestSymmetricBMA(unittest.TestCase):
+    def setUp(self):
+        self.ontology = Ontology(TOY_PARENTS)
+
     def test_bma_normal_case(self):
         actual = symmetric_bma(
             PATIENT_TOY_PHENOTYPE_PROFILE,
             GENE_TOY_PHENOTYPE_PROFILE,
-            IC_VALUES
+            IC_VALUES,
+            self.ontology
             )
         expected = 0.5849625007211563
         self.assertAlmostEqual(actual, expected)
@@ -31,7 +44,8 @@ class TestSymmetricBMA(unittest.TestCase):
             symmetric_bma(
                 EMPTY_PATIENT_PHENOTYPE_PROFILE,
                 EMPTY_GENE_PHENOTYPE_PROFILE,
-                IC_VALUES
+                IC_VALUES,
+                self.ontology
                 )
 
     def test_bma_with_gene_profile_empty(self):
@@ -39,5 +53,6 @@ class TestSymmetricBMA(unittest.TestCase):
             symmetric_bma(
                 PATIENT_TOY_PHENOTYPE_PROFILE,
                 EMPTY_GENE_PHENOTYPE_PROFILE,
-                IC_VALUES
+                IC_VALUES,
+                self.ontology
                 )

@@ -2,7 +2,7 @@
 
 from semantic_similarity import resnik
 
-def symmetric_bma(patient_phenotype_profile, gene_phenotype_profile, ic_values):
+def symmetric_bma(patient_phenotype_profile, gene_phenotype_profile, ic_values, ontology):
     """Computes pairwise Resnik similarities between patient and gene phenotype terms,
     selects the best matches in both directions,
     and computes the symmetric Best Match Average.
@@ -11,6 +11,7 @@ def symmetric_bma(patient_phenotype_profile, gene_phenotype_profile, ic_values):
         patient_phenotype_profile: Patient's human ontology phenotype profile.
         gene_phenotype_profile: Gene's annotated human ontology phenotype profile.
         ic_values: Dictionary mapping each HPO term to its Information Content value.
+        ontology: An Ontology object used to retrieve ancestors of HPO terms.
 
     Returns:
         Symmetric Best Match Average score between the patient and gene phenotype profiles.
@@ -21,7 +22,7 @@ def symmetric_bma(patient_phenotype_profile, gene_phenotype_profile, ic_values):
     for patient_term in patient_phenotype_profile:
         maximum = 0
         for gene_term in gene_phenotype_profile:
-            resnik_value = resnik(patient_term, gene_term, ic_values)
+            resnik_value = resnik(patient_term, gene_term, ic_values, ontology)
             maximum = max(maximum, resnik_value)
         patient_side_best_matches.append(maximum)
     average_patient_side_best_matches = sum(
@@ -31,7 +32,7 @@ def symmetric_bma(patient_phenotype_profile, gene_phenotype_profile, ic_values):
     for gene_term in gene_phenotype_profile:
         maximum = 0
         for patient_term in patient_phenotype_profile:
-            resnik_value = resnik(gene_term, patient_term, ic_values)
+            resnik_value = resnik(gene_term, patient_term, ic_values, ontology)
             maximum = max(maximum, resnik_value)
         gene_side_best_matches.append(maximum)
     average_gene_side_best_matches = sum(

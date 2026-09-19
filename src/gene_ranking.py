@@ -2,13 +2,14 @@
 
 from profile_similarity import symmetric_bma
 
-def score_genes(patient_phenotype_profile, gene_phenotype_profiles, ic_values):
+def score_genes(patient_phenotype_profile, gene_phenotype_profiles, ic_values, ontology):
     """Computes symmetric BMA for patient phenotype profile and genes in gene phenotype profiles.
 
     Args:
         patient_phenotype_profile: Set of HPO terms describing the patient's phenotype.
         gene_phenotype_profiles: Dictionary mapping each gene to its set of annotated HPO terms.
         ic_values: Dictionary mapping each HPO term to its Information Content value.
+        ontology: An Ontology object used to retrieve ancestors of HPO terms.
 
     Returns:
         Dictionary mapping each gene to its symmetric BMA score.
@@ -18,7 +19,8 @@ def score_genes(patient_phenotype_profile, gene_phenotype_profiles, ic_values):
         gene_scores[gene] = symmetric_bma(
             patient_phenotype_profile,
             gene_phenotype_profiles[gene],
-            ic_values
+            ic_values,
+            ontology
             )
     return gene_scores
 

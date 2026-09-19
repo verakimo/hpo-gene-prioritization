@@ -1,8 +1,6 @@
 """Provides MICA and Resnik semantic similarity calculations."""
 
-from ontology import ancestors
-
-def mica(term_1, term_2, ic_values):
+def mica(term_1, term_2, ic_values, ontology):
     """Selects Most Informative Common Ancestor for two HPO terms.
 
     Args:
@@ -10,6 +8,7 @@ def mica(term_1, term_2, ic_values):
         term_2: another HPO term.
         ic_values: Dictionary mapping each HPO term
         to its Information Content value.
+        ontology: An Ontology object used to retrieve ancestors of HPO terms.
     
     Raises:
         ValueError: If the two HPO terms have no common ancestor.
@@ -17,8 +16,8 @@ def mica(term_1, term_2, ic_values):
     Returns:
         The HPO term selected as the most informative common ancestor.
     """
-    ancestors_1 = ancestors(term_1)
-    ancestors_2 = ancestors(term_2)
+    ancestors_1 = ontology.ancestors(term_1)
+    ancestors_2 = ontology.ancestors(term_2)
     common_ancestors = ancestors_1.intersection(ancestors_2)
     if not common_ancestors:
         raise ValueError("No common ancestor found for the given HPO terms.")
@@ -32,7 +31,7 @@ def mica(term_1, term_2, ic_values):
     return result
 
 
-def resnik(term_1, term_2, ic_values):
+def resnik(term_1, term_2, ic_values, ontology):
     """Returns Resnik semantic similarity measure for selected
     most informative common ancestor for two HPO terms.
 
@@ -41,10 +40,11 @@ def resnik(term_1, term_2, ic_values):
         term_2: another HPO term.
         ic_values: Dictionary mapping each HPO term
         to its Information Content value.
+        ontology: An Ontology object used to retrieve ancestors of HPO terms.
     
     Returns:
         Information Content value of the HPO term
         selected by the MICA technique.
     """
-    result = mica(term_1, term_2, ic_values)
+    result = mica(term_1, term_2, ic_values, ontology)
     return ic_values[result]

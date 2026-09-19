@@ -1,6 +1,7 @@
 import unittest
 
 from annotations import propagation
+from ontology import Ontology
 
 TEST_GENE_ANNOTATIONS = {
     "g1": {"C"},
@@ -11,9 +12,21 @@ TEST_GENE_ANNOTATIONS = {
 
 EMPTY_DATASET = {}
 
+TOY_PARENTS = {
+    "ROOT": set(),
+    "A": {"ROOT"},
+    "B": {"ROOT"},
+    "C": {"A"},
+    "D": {"A", "B"}
+}
+
+
 class TestPropagation(unittest.TestCase):
+    def setUp(self):
+        self.ontology = Ontology(TOY_PARENTS)
+
     def test_general_dataset(self):
-        actual = propagation(TEST_GENE_ANNOTATIONS)
+        actual = propagation(TEST_GENE_ANNOTATIONS, self.ontology)
         expected = {
             "g1": {"C", "A", "ROOT"},
             "g2": {"D", "A", "B", "ROOT"},
@@ -23,6 +36,6 @@ class TestPropagation(unittest.TestCase):
         self.assertEqual(actual, expected)
 
     def test_empty_dataset(self):
-        actual = propagation(EMPTY_DATASET)
+        actual = propagation(EMPTY_DATASET, self.ontology)
         expected = {}
         self.assertEqual(actual, expected)

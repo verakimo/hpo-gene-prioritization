@@ -1,6 +1,7 @@
 import unittest
 
 from gene_ranking import score_genes, rank_genes, rich_output
+from ontology import Ontology
 
 PATIENT_PROFILE = {"C", "B"}
 
@@ -30,10 +31,21 @@ UNRANKED_GENE_SCORES = {
     'g2': 0.5849625007211563
 }
 
+TOY_PARENTS = {
+    "ROOT": set(),
+    "A": {"ROOT"},
+    "B": {"ROOT"},
+    "C": {"A"},
+    "D": {"A", "B"}
+}
+
 
 class TestGeneRanking(unittest.TestCase):
+    def setUp(self):
+        self.ontology = Ontology(TOY_PARENTS)
+
     def test_score_genes(self):
-        actual = score_genes(PATIENT_PROFILE, GENE_PROFILES, IC_VALUES)
+        actual = score_genes(PATIENT_PROFILE, GENE_PROFILES, IC_VALUES, self.ontology)
         expected = {
             'g1': 1.1887218755408673,
             'g2': 0.5849625007211563,
