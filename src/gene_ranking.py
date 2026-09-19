@@ -1,3 +1,5 @@
+"""Provides phenotype-based gene scoring, ranking, and output formatting."""
+
 from profile_similarity import symmetric_bma
 
 def score_genes(patient_phenotype_profile, gene_phenotype_profiles, ic_values):

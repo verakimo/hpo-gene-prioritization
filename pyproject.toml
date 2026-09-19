@@ -1,0 +1,25 @@
+[project]
+name = "hpo-gene-prioritization"
+version = "0.1.0"
+description = ""
+authors = [
+    {name = "Veronika Akimova",email = "176243151+verakimo@users.noreply.github.com"}
+]
+readme = "README.md"
+requires-python = ">=3.11,<4.0"
+dependencies = [
+]
+
+
+[build-system]
+requires = ["poetry-core>=2.0.0,<3.0.0"]
+build-backend = "poetry.core.masonry.api"
+
+[tool.poetry]
+package-mode = false
+
+[dependency-groups]
+dev = [
+    "coverage (>=7.16.1,<8.0.0)",
+    "pylint (>=4.0.8,<5.0.0)"
+]

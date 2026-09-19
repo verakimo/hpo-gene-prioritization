@@ -1,3 +1,5 @@
+"""Provides functions for propagating gene phenotype annotations."""
+
 from ontology import ancestors
 
 def annotation(data, gene):

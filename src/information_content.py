@@ -1,3 +1,5 @@
+"""Provides Information Content calculation for HPO terms."""
+
 import math
 
 def information_content(propagated_annotations):
@@ -11,11 +13,11 @@ def information_content(propagated_annotations):
     Returns:
         Dictionary mapping each HPO term to its Information Content value.
     """
-    N = len(propagated_annotations)
-    information_content = {}
+    total_genes = len(propagated_annotations)
+    ic_values = {}
     for gene in propagated_annotations:
         for term in propagated_annotations[gene]:
-            information_content[term] = information_content.get(term, 0) + 1/N
-    for term in information_content:
-        information_content[term] = -1*math.log2(information_content[term])
-    return information_content
+            ic_values[term] = ic_values.get(term, 0) + 1/total_genes
+    for term in ic_values:
+        ic_values[term] = -1*math.log2(ic_values[term])
+    return ic_values

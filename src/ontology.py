@@ -1,3 +1,5 @@
+"""Provides HPO ontology traversal and ancestor lookup functions."""
+
 ancestor_cache = {}
 
 TOY_PARENTS = {
@@ -38,8 +40,7 @@ def ancestors(term):
     """
     if term in ancestor_cache:
         return ancestor_cache[term]
-    else:
-        visited = set()
-        dfs(term, visited)
-        ancestor_cache[term] = visited
-        return visited
+    visited = set()
+    dfs(term, visited)
+    ancestor_cache[term] = visited
+    return visited

@@ -1,3 +1,5 @@
+"""Provides phenotype profile similarity measures."""
+
 from semantic_similarity import resnik
 
 def symmetric_bma(patient_phenotype_profile, gene_phenotype_profile, ic_values):
