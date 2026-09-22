@@ -1,3 +1,12 @@
+"""Provides the command-line interface for phenotype-driven gene prioritization.
+
+Loads HPO ontology and gene-to-phenotype annotation data, propagates gene
+annotations, calculates Information Content values of propagated annotations,
+calculates phenotype-profile similarity scores, ranks candidate genes, and
+displays the top results for the patient's HPO phenotype profile in a
+user-friendly manner.
+"""
+
 from annotations import propagation
 from gene_annotation_parser import parse_gene_annotations
 from gene_ranking import rank_genes, rich_output, score_genes
@@ -12,6 +21,7 @@ TOP_RESULTS = 10
 
 
 def main():
+    """Runs the gene-prioritization pipeline and displays the top candidates."""
     parents = parse_obo(HPO_FILE)
     ontology = Ontology(parents)
     gene_annotations = parse_gene_annotations(GENE_ANNOTATION_FILE)
@@ -20,7 +30,8 @@ def main():
     ic_values = information_content(propagated_annotations)
 
     user_input = input(
-    "Enter the patient's phenotype terms as Human Phenotype Ontology (HPO) IDs separated by spaces (e.g. HP:0002460 HP:0002451): ")
+    "Enter the patient's phenotype terms as Human Phenotype Ontology (HPO) IDs " \
+    "separated by spaces (e.g. HP:0002460 HP:0002451): ")
     patient_profile = set(user_input.split())
 
     gene_scores = score_genes(

@@ -4,13 +4,12 @@ from semantic_similarity import mica, resnik
 from ontology import Ontology
 
 IC_VALUES = {
-    'ROOT': -0.0,
-    'A': 0.5849625007211563,
-    'C': 1.5849625007211563,
-    'D': 1.5849625007211563,
-    'B': 0.5849625007211563
-    }
-
+    "ROOT": -0.0,
+    "A": 0.5849625007211563,
+    "C": 1.5849625007211563,
+    "D": 1.5849625007211563,
+    "B": 0.5849625007211563
+}
 
 TOY_PARENTS = {
     "ROOT": set(),
@@ -20,10 +19,21 @@ TOY_PARENTS = {
     "D": {"A", "B"}
 }
 
+TEST_VALUEERROR_PARENTS = {
+    "ROOT_X": set(),
+    "A": {"ROOT_X"},
+    "B": {"ROOT_X"},
+    "C": {"A"},
+    "D": {"A", "B"},
+    "ROOT_Y": set(),
+    "E": {"ROOT_Y"},
+    "F": {"ROOT_Y"},
+    "G": {"E", "F"}
+}
 
 class TestSemanticSimilarity(unittest.TestCase):
     def setUp(self):
-            self.ontology = Ontology(TOY_PARENTS)
+        self.ontology = Ontology(TOY_PARENTS)
 
     def test_mica_with_shared_informative_ancestor(self):
         actual = mica("C", "D", IC_VALUES, self.ontology)
@@ -54,3 +64,14 @@ class TestSemanticSimilarity(unittest.TestCase):
         actual = resnik("B", "B", IC_VALUES, self.ontology)
         expected = 0.5849625007211563
         self.assertAlmostEqual(actual, expected)
+
+class TestSemanticSimilarity(unittest.TestCase):
+    def setUp(self):
+        self.ontology = Ontology(TEST_VALUEERROR_PARENTS)
+
+    def test_mica_for_value_error(self):
+        with self.assertRaisesRegex(
+            ValueError,
+            r"No common ancestor found for the given HPO terms\."
+        ):
+            mica("C", "G", {}, self.ontology)
