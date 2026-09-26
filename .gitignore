@@ -1,9 +1,17 @@
 # Byte-compiled / optimized / DLL files
 __pycache__/
 *.py[codz]
+*.py[cod]
 *$py.class
+
+# Coverage generated files
+.coverage
+htmlcov/
+
+# External project data
 data/hp.obo
 data/genes_to_phenotype.txt
+real_case_validation/benchmark_data/
 
 # C extensions
 *.so

@@ -1,0 +1,5 @@
+# Implementation Document
+
+## General Structure of the Program
+
+The program is implemented in Python as a pipeline for phenotype-driven gene prioritization. It reads the HPO ontology and gene-to-phenotype annotation data, represents the ontology using parent relationships and cached ancestor sets, propagates gene annotations to ancestor HPO terms, calculates Information Content values, computes pairwise semantic similarity using MICA and Resnik similarity, combines these scores with symmetric Best Match Average, and finally ranks candidate genes according to their similarity to the patient's HPO phenotype profile. The implementation is divided into separate modules for ontology parsing and traversal, annotation parsing and propagation, Information Content, semantic similarity, profile similarity, gene ranking, and the command-line interface.
