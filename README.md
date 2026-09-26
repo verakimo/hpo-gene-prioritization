@@ -9,7 +9,7 @@ For installation, required data files, running the program, tests, coverage, and
 ## Documentation
 
 - [Specification Document](documentation/specification.md)
-- [Implementaion Document][documentation/implementation_document.md]
+- [Implementaion Document](documentation/implementation_document.md)
 - [Testing Document](documentation/testing_document.md)
 - [User Guide](documentation/user_guide.md)
 
