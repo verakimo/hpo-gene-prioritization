@@ -5,7 +5,7 @@
 Clone the repository and move to the project directory:
 
 ```bash
-git clone <https://github.com/verakimo/hpo-gene-prioritization.git>
+git clone https://github.com/verakimo/hpo-gene-prioritization.git
 cd hpo-gene-prioritization
 ```
 
@@ -78,6 +78,8 @@ Run all unit tests:
 ```bash
 PYTHONPATH=src poetry run python -m unittest discover -s tests -p "test_*.py" -v
 ```
+
+For details about the test cases, coverage, and empirical validation, see the [Testing Document](documentation/testing_document.md).
 
 ## Test Coverage
 
