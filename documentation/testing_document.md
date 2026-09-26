@@ -102,6 +102,8 @@ PYTHONPATH=src poetry run python -m pylint src
 
 Run the empirical validation:
 
+See the [User Guide](documentation/user_guide.md#real-case-validation) for the required Phenopacket Store data and setup instructions.
+
 ```bash
 PYTHONPATH=src poetry run python real_case_validation/run_validation.py
 ```
