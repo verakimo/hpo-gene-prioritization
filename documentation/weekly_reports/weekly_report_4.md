@@ -47,4 +47,4 @@ The main functionality of the project is now essentially complete. The complete 
 
 ## Time spent
 
-This week I spent **12 hours and 15 minutes** working on the course project.
+This week I spent **12 hours and 30 minutes** working on the course project.
