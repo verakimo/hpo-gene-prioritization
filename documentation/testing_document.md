@@ -49,7 +49,8 @@ The manually constructed inputs are intentionally small so that the expected res
 
 In addition to unit testing, the complete prioritization pipeline was tested using real solved cases from the **Phenopacket Store**.
 
-Phenopacket Store: [repository link](https://github.com/monarch-initiative/phenopacket-store/tree/main)
+Phenopacket Store: [GitHub repository link](https://github.com/monarch-initiative/phenopacket-store/tree/main)
+
 Download link: [download link](https://github.com/monarch-initiative/phenopacket-store/releases/latest/download/all_phenopackets.zip)
 
 Four cohorts were selected for the validation: **ABCA4, F8, GALT, and OCA2**.
