@@ -51,7 +51,7 @@ In addition to unit testing, the complete prioritization pipeline was tested usi
 
 Phenopacket Store: [GitHub repository link](https://github.com/monarch-initiative/phenopacket-store/tree/main)
 
-Download link: [download link](https://github.com/monarch-initiative/phenopacket-store/releases/latest/download/all_phenopackets.zip)
+Download link: [The latest release ZIP archive download link](https://github.com/monarch-initiative/phenopacket-store/releases/latest/download/all_phenopackets.zip)
 
 Four cohorts were selected for the validation: **ABCA4, F8, GALT, and OCA2**.
 
