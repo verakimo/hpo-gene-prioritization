@@ -79,7 +79,7 @@ Run all unit tests:
 PYTHONPATH=src poetry run python -m unittest discover -s tests -p "test_*.py" -v
 ```
 
-For details about the test cases, coverage, and empirical validation, see the [Testing Document](documentation/testing_document.md).
+For details about the test cases, coverage, and empirical validation, see the [Testing Document](testing_document.md).
 
 ## Test Coverage
 
