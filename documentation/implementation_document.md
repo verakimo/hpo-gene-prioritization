@@ -35,3 +35,61 @@ The program prioritizes candidate genes based on phenotypic similarity, but it d
 The code was written entirely by me, without using LLM-generated code.
 
 ## References
+
+[1] P. Resnik, "Using Information Content to Evaluate Semantic
+Similarity in a Taxonomy," in *Proceedings of the 14th International
+Joint Conference on Artificial Intelligence (IJCAI)*, vol. 1,
+pp. 448–453, 1995.
+Available: https://arxiv.org/abs/cmp-lg/9511007
+
+[2] C. Pesquita, D. Faria, A. O. Falcão, P. Lord, and F. M. Couto,
+"Semantic Similarity in Biomedical Ontologies,"
+*PLoS Computational Biology*, vol. 5, no. 7, e1000443, 2009.
+doi: 10.1371/journal.pcbi.1000443
+
+[3] A. J. Masino et al., "Clinical phenotype-based gene
+prioritization: An initial study using semantic similarity
+and the human phenotype ontology," *BMC Bioinformatics*,
+vol. 15, art. no. 248, 2014.
+doi: 10.1186/1471-2105-15-248
+
+[4] M. S. Ladewig et al., "GA4GH Phenopackets: A Practical
+Introduction," *Advanced Genetics*, vol. 4, no. 1,
+art. no. 2200016, 2023.
+doi: 10.1002/ggn2.202200016
+
+[5] OBO Foundry, "Human Phenotype Ontology (HPO)." [Online].
+Available: https://obofoundry.org/ontology/hp
+
+[6] Human Phenotype Ontology, "Gene-to-Phenotype Annotations."
+[Online].
+Available: https://obophenotype.github.io/human-phenotype-ontology/annotations/genes_to_phenotype/
+
+[7] Monarch Initiative, "Phenopacket Store," GitHub repository.
+[Online].
+Available: https://github.com/monarch-initiative/phenopacket-store
+
+[8] University of Helsinki, "Data Structures and Algorithms,
+Spring 2026." [Online].
+Available: https://tira.mooc.fi/kevat-2026/
+
+[9] University of Helsinki, "Python Programming MOOC 2026:
+Writing Files." [Online].
+Available: https://ohjelmointi-26.mooc.fi/osa-6/2-tiedostojen-kirjoittaminen
+
+[10] University of Helsinki, "Algorithms and Artificial
+Intelligence Lab." [Online].
+Available: https://algolabra-hy.github.io/
+
+[11] University of Helsinki, "Software Engineering."
+[Online].
+Available: https://ohjelmistotuotanto-hy.github.io/
+
+[12] DataCamp, "DataCamp." [Online].
+Available: https://www.datacamp.com/
+
+[13] GeeksforGeeks, "GeeksforGeeks." [Online].
+Available: https://www.geeksforgeeks.org/
+
+[14] W3Schools, "W3Schools." [Online].
+Available: https://www.w3schools.com/
