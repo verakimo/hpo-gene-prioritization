@@ -31,7 +31,7 @@ TEST_VALUEERROR_PARENTS = {
     "G": {"E", "F"}
 }
 
-class TestSemanticSimilarity(unittest.TestCase):
+class TestMICAandResnik(unittest.TestCase):
     def setUp(self):
         self.ontology = Ontology(TOY_PARENTS)
 
@@ -65,7 +65,7 @@ class TestSemanticSimilarity(unittest.TestCase):
         expected = 0.5849625007211563
         self.assertAlmostEqual(actual, expected)
 
-class TestSemanticSimilarity(unittest.TestCase):
+class TestMicaForValueError(unittest.TestCase):
     def setUp(self):
         self.ontology = Ontology(TEST_VALUEERROR_PARENTS)
 

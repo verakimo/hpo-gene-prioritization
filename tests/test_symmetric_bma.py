@@ -1,6 +1,6 @@
 import unittest
 
-from profile_similarity import symmetric_bma
+from semantic_similarity import symmetric_bma
 from ontology import Ontology
 
 PATIENT_TOY_PHENOTYPE_PROFILE = {"C", "B"}

@@ -17,7 +17,7 @@ class TestMemoization(unittest.TestCase):
     def test_ancestor_cache(self):
         self.ontology.ancestor_cache.clear()
         self.assertNotIn("D", self.ontology.ancestor_cache)
-        self.ontology.ancestors("D")
+        self.ontology.get_ancestors("D")
         self.assertIn("D", self.ontology.ancestor_cache)
         actual = self.ontology.ancestor_cache["D"]
         expected = {"D", "A", "B", "ROOT"}

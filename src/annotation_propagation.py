@@ -1,6 +1,6 @@
 """Provides functions for propagating gene phenotype annotations."""
 
-def annotation(data, gene, ontology):
+def propagate_gene_annotations(data, gene, ontology):
     """Propagates the direct HPO annotations of a given gene.
     For each HPO term, finds the ancestor-or-self set.
     Combines these sets.
@@ -16,11 +16,11 @@ def annotation(data, gene, ontology):
     terms = data[gene]
     terms_ancestors = set()
     for term in terms:
-        terms_ancestors.update(ontology.ancestors(term))
+        terms_ancestors.update(ontology.get_ancestors(term))
     return terms_ancestors
 
 
-def propagation(data, ontology):
+def propagate_all_annotations(data, ontology):
     """Propagates direct HPO annotations for all genes in the dataset.
 
     Args:
@@ -32,5 +32,5 @@ def propagation(data, ontology):
     """
     propagated_annotations = {}
     for gene in data:
-        propagated_annotations[gene] = annotation(data, gene, ontology)
+        propagated_annotations[gene] = propagate_gene_annotations(data, gene, ontology)
     return propagated_annotations

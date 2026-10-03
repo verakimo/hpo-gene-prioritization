@@ -12,7 +12,7 @@ class Ontology:
         self.ancestor_cache = {}
 
 
-    def dfs(self, node, visited):
+    def collect_ancestors(self, node, visited):
         """Traverses the graph from the given HPO term to its parents 
         and adds the visited terms to visited.
         
@@ -25,10 +25,10 @@ class Ontology:
         visited.add(node)
 
         for next_node in self.parents[node]:
-            self.dfs(next_node, visited)
+            self.collect_ancestors(next_node, visited)
 
 
-    def ancestors(self, term):
+    def get_ancestors(self, term):
         """Finds the ancestor-or-self set for a given HPO term.
         Uses cached results when available.
 
@@ -41,6 +41,6 @@ class Ontology:
         if term in self.ancestor_cache:
             return self.ancestor_cache[term]
         visited = set()
-        self.dfs(term, visited)
+        self.collect_ancestors(term, visited)
         self.ancestor_cache[term] = visited
         return visited

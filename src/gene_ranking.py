@@ -1,6 +1,6 @@
 """Provides phenotype-based gene scoring, ranking, and output formatting."""
 
-from profile_similarity import symmetric_bma
+from semantic_similarity import symmetric_bma
 
 def score_genes(patient_phenotype_profile, gene_phenotype_profiles, ic_values, ontology):
     """Computes symmetric BMA for patient phenotype profile and genes in gene phenotype profiles.
@@ -25,8 +25,8 @@ def score_genes(patient_phenotype_profile, gene_phenotype_profiles, ic_values, o
     return gene_scores
 
 
-def rank_genes(gene_scores):
-    """Ranks genes by BMA score in descending order.
+def sort_genes(gene_scores):
+    """Sorts genes by BMA score in descending order.
 
     Args:
         gene_scores: BMA scores for genes.
@@ -34,22 +34,22 @@ def rank_genes(gene_scores):
     Returns:
         Dictionary mapping genes to BMA scores in descending score order.
     """
-    ranked_genes = dict(
+    sorted_genes = dict(
         sorted(
             gene_scores.items(),
             key=lambda item: item[1],
             reverse=True
             )
         )
-    return ranked_genes
+    return sorted_genes
 
 
-def rich_output(ranked_genes, gene_phenotype_profiles):
+def rich_output(sorted_genes, gene_phenotype_profiles):
     """Creates a ranked output containing each gene's rank,
     BMA score, and phenotype annotations.
 
     Args:
-        ranked_genes: Sorted dictionary mapping each gene to its BMA score.
+        sorted_genes: Sorted dictionary mapping each gene to its BMA score.
         gene_phenotype_profiles: Dictionary mapping each gene to its set of annotated HPO terms.
     
     Returns:
@@ -57,11 +57,11 @@ def rich_output(ranked_genes, gene_phenotype_profiles):
     """
     top_rank = []
     n = 1
-    for gene in ranked_genes:
+    for gene in sorted_genes:
         richer_output = {
             "rank": n,
             "gene": gene,
-            "score": ranked_genes[gene],
+            "score": sorted_genes[gene],
             "phenotypes": gene_phenotype_profiles[gene]
         }
         top_rank.append(richer_output)

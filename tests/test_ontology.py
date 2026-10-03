@@ -15,11 +15,11 @@ class TestOntology(unittest.TestCase):
         self.ontology = Ontology(TOY_PARENTS)
 
     def test_ancestors_result(self):
-        actual = self.ontology.ancestors("D")
+        actual = self.ontology.get_ancestors("D")
         expected = {"D", "A", "B", "ROOT"}
         self.assertEqual(actual, expected)
 
     def test_ancestors_root(self):
-        actual = self.ontology.ancestors("ROOT")
+        actual = self.ontology.get_ancestors("ROOT")
         expected = {"ROOT"}
         self.assertEqual(actual, expected)

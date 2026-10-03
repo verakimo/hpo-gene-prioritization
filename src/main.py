@@ -7,9 +7,9 @@ displays the top results for the patient's HPO phenotype profile in a
 user-friendly manner.
 """
 
-from annotations import propagation
+from annotation_propagation import propagate_all_annotations
 from gene_annotation_parser import parse_gene_annotations
-from gene_ranking import rank_genes, rich_output, score_genes
+from gene_ranking import sort_genes, rich_output, score_genes
 from hpo_parser import parse_obo
 from information_content import information_content
 from ontology import Ontology
@@ -26,7 +26,7 @@ def main():
     ontology = Ontology(parents)
     gene_annotations = parse_gene_annotations(GENE_ANNOTATION_FILE)
 
-    propagated_annotations = propagation(gene_annotations, ontology)
+    propagated_annotations = propagate_all_annotations(gene_annotations, ontology)
     ic_values = information_content(propagated_annotations)
 
     user_input = input(
@@ -40,9 +40,9 @@ def main():
         ic_values,
         ontology
     )
-    ranked_genes = rank_genes(gene_scores)
+    sorted_genes = sort_genes(gene_scores)
     output = rich_output(
-        ranked_genes,
+        sorted_genes,
         gene_annotations
     )
 

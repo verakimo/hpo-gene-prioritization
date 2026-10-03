@@ -1,6 +1,6 @@
 import unittest
 
-from gene_ranking import score_genes, rank_genes, rich_output
+from gene_ranking import score_genes, sort_genes, rich_output
 from ontology import Ontology
 
 PATIENT_PROFILE = {"C", "B"}
@@ -53,8 +53,8 @@ class TestGeneRanking(unittest.TestCase):
             }
         self.assertEqual(actual, expected)
 
-    def test_rank_genes(self):
-        actual = rank_genes(UNRANKED_GENE_SCORES)
+    def test_sort_genes(self):
+        actual = sort_genes(UNRANKED_GENE_SCORES)
         self.assertEqual(list(actual.keys()), ["g1", "g2", "g3"])
 
     def test_rich_output(self):

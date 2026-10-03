@@ -9,9 +9,9 @@ import json
 import os
 import time
 
-from annotations import propagation
+from annotation_propagation import propagate_all_annotations
 from gene_annotation_parser import parse_gene_annotations
-from gene_ranking import rank_genes, rich_output, score_genes
+from gene_ranking import sort_genes, rich_output, score_genes
 from hpo_parser import parse_obo
 from information_content import information_content
 from ontology import Ontology
@@ -114,9 +114,9 @@ def run_hpo_gene_prioritization(
         ic_values,
         ontology
     )
-    ranked_genes = rank_genes(gene_scores)
+    sorted_genes = sort_genes(gene_scores)
     output = rich_output(
-        ranked_genes,
+        sorted_genes,
         gene_annotations
     )
 
@@ -185,7 +185,17 @@ def create_validation_inputs(file_path, cohort):
 
 
 def print_output(validation_results, program_time):
-    """Print grouped validation results and runtime statistics."""
+    """Print grouped validation results and runtime statistics.
+
+    Groups validation cases by causal gene and calculates the number
+    and percentage of cases in which the causal gene is ranked first
+    or appears in the top 10. Also prints the total results and
+    average processing time per case.
+
+    Args:
+        validation_results: List of dictionaries containing validation results, grouped by causal gene.
+        program_time: Total validation runtime in seconds.
+    """
     if not validation_results:
         print("\nNo validation cases were processed.\n")
         return
@@ -325,7 +335,7 @@ def run_validation():
     parents = parse_obo(HPO_FILE)
     ontology = Ontology(parents)
     gene_annotations = parse_gene_annotations(GENE_ANNOTATION_FILE)
-    propagated_annotations = propagation(gene_annotations, ontology)
+    propagated_annotations = propagate_all_annotations(gene_annotations, ontology)
     ic_values = information_content(propagated_annotations)
 
     for cohort in VALIDATION_COHORTS:

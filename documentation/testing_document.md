@@ -8,7 +8,7 @@ Branch coverage is measured with the `coverage` package.
 
 | Metric | Result |
 |---|---:|
-| Unit tests | 19 passed |
+| Unit tests | 25 passed |
 | Statements | 119 / 119 |
 | Branches | 48 / 48 |
 | Statement coverage | 100% |
@@ -26,10 +26,9 @@ The unit tests are divided into separate test modules corresponding to the main 
 - **Gene annotation parsing (`test_gene_annotation_parser.py`):** verifies that gene symbols and HPO terms are read correctly from the gene-to-phenotype input file and stored in the expected gene-to-HPO mapping.
 - **Ontology (`test_ontology.py`):** verifies ancestor lookup in a small ontology graph, including terms with multiple parent relationships.
 - **Memoization (`test_memoization.py`):** verifies that ancestor sets calculated by the ontology are stored in the cache and reused in later queries.
-- **Annotations (`test_annotations.py`):** verifies annotation propagation for a single gene. A gene with one direct HPO term is tested to ensure that the term and all of its ancestors are returned. A gene with multiple direct HPO terms is also tested to verify that the union of their ancestor sets is returned correctly.
-- **Annotation propagation (`test_propagations.py`):** verifies propagation for a complete gene-to-phenotype annotation dataset. The expected propagated HPO terms are checked for every gene in a small manually constructed dataset. An empty annotation dataset is also tested and is expected to return an empty dictionary.
+- **Annotation propagation (`test_annotation_propagation.py`):** verifies annotation propagation for both individual genes and complete gene-to-phenotype annotation datasets. For individual genes, tests check that a gene with one direct HPO term returns the term and all its ancestors, while a gene with multiple direct HPO terms returns the union of their ancestor sets. For a complete dataset, the expected propagated HPO terms are checked for every gene using a small manually constructed dataset. An empty annotation dataset is also tested and is expected to return an empty dictionary.
 - **Information Content (`test_information_content.py`):** verifies that Information Content values are calculated correctly from propagated gene annotations.
-- **Semantic similarity (`test_semantic_similarity.py`):** verifies MICA and Resnik similarity using a small manually constructed ontology. A disconnected ontology is also used to verify that a `ValueError` is raised when two HPO terms have no common ancestor.
+- **Semantic similarity (`test_mica_resnik.py`):** verifies MICA and Resnik similarity using a small manually constructed ontology. A disconnected ontology is also used to verify that a `ValueError` is raised when two HPO terms have no common ancestor.
 - **Symmetric Best Match Average (`test_symmetric_bma.py`):** verifies that symmetric BMA returns the expected similarity score for a small patient phenotype profile and gene phenotype profile with manually defined IC values. It also verifies that a `ValueError` is raised when both phenotype profiles are empty or when the gene phenotype profile is empty.
 - **Gene ranking (`test_gene_ranking.py`):** verifies gene scoring and that candidate genes are returned in the expected ranking order.
 
