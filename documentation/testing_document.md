@@ -2,7 +2,7 @@
 
 ## Unit Testing and Coverage
 
-The algorithmic logic of the program is tested with Python's `unittest` framework. The current test suite contains **19 automated unit tests**, all of which pass.
+The algorithmic logic of the program is tested with Python's `unittest` framework. The current test suite contains **25 automated unit tests**, all of which pass.
 
 Branch coverage is measured with the `coverage` package.
 
