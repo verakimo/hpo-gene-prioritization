@@ -88,7 +88,7 @@ The ontology requires O(V + E) space. Cached ancestor sets may require up to O(V
 
 The program prioritizes candidate genes based on phenotypic similarity, but it does not identify specific disease-causing alleles or genetic variants. A possible future improvement would be to integrate genetic variant data and extend the program to variant-level prioritization.
 
-Another possible extension would be to include a gene-to-disease annotation file, such as `genes_to_disease.txt`, so that the program could also return candidate disease names based on the patient's phenotype profile.
+Another possible extension would be to include the `genes_to_disease.txt` file [15], which could be used to map prioritized genes to associated disease identifiers, such as OMIM IDs.
 
 The output could also be extended so that the ranked results could be saved to a file, for example in `.txt` or `.json` format, instead of being displayed only in the command-line interface.
 
@@ -114,8 +114,7 @@ The code was written entirely by me, without using LLM-generated code.
 [1] OBO Foundry, "Human Phenotype Ontology (HPO)." [Online].
 Available: https://obofoundry.org/ontology/hp
 
-[2] Human Phenotype Ontology, "Gene-to-Phenotype Annotations."
-[Online].
+[2] Human Phenotype Ontology, "genes_to_phenotype.txt." [Online].
 Available: https://obophenotype.github.io/human-phenotype-ontology/annotations/genes_to_phenotype/
 
 [3] University of Helsinki, "Data Structures and Algorithms,
@@ -167,3 +166,6 @@ doi: 10.1002/ggn2.202200016
 [14] Monarch Initiative, "Phenopacket Store," GitHub repository.
 [Online].
 Available: https://github.com/monarch-initiative/phenopacket-store
+
+[15] Human Phenotype Ontology, "genes_to_disease.txt." [Online].
+Available: https://obophenotype.github.io/human-phenotype-ontology/annotations/genes_to_disease/
