@@ -71,7 +71,7 @@ The ranked results are enriched with the gene's rank, BMA score, and phenotype a
 
 The implementation of the program was supported by several learning resources, including course materials from the University of Helsinki courses *Data Structures and Algorithms, Spring 2026* [3], *Introduction to Programming, 2026* [7], *Algorithms and Artificial Intelligence Project* [8], and *Software Engineering* [9], as well as the programming resources listed in references [10–12].
 
-The scientific literature in references [4]–[6] was used to understand the theoretical background and core algorithms used in the project, including Information Content, Resnik similarity, and phenotype-based gene prioritization.
+The scientific literature in references [4-6] was used to understand the theoretical background and core algorithms used in the project, including Information Content, Resnik similarity, and phenotype-based gene prioritization.
 
 For the real-case validation, GA4GH Phenopacket resources [13] and data from the Phenopacket Store [14] were used. See the [Testing Document](testing_document.md) for more details.
 
