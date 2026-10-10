@@ -69,7 +69,7 @@ The ranked results are enriched with the gene's rank, BMA score, and phenotype a
 
 ### Implementation Resources
 
-The implementation of the program was supported by several learning resources, including course materials from the University of Helsinki courses *Data Structures and Algorithms, Spring 2026* [3], *Introduction to Programming, 2026* [7], *Aineopintojen harjoitustyö: Algoritmit ja tekoäly* [8], and *Software Engineering* [9], as well as the programming resources listed in references [10–12].
+The implementation of the program was supported by several learning resources, including course materials from the University of Helsinki courses *Data Structures and Algorithms, Spring 2026* [3], *Introduction to Programming, 2026* [7], *Algorithms and Artificial Intelligence Project* [8], and *Software Engineering* [9], as well as the programming resources listed in references [10–12].
 
 The scientific literature in references [4]–[6] was used to understand the theoretical background and core algorithms used in the project, including Information Content, Resnik similarity, and phenotype-based gene prioritization.
 
@@ -126,7 +126,7 @@ Available: https://tira.mooc.fi/kevat-2026/
 Similarity in a Taxonomy," in *Proceedings of the 14th International
 Joint Conference on Artificial Intelligence (IJCAI)*, vol. 1,
 pp. 448–453, 1995.
-Available: https://arxiv.org/abs/cmp-lg/9511007
+Available: https://arxiv.org/pdf/cmp-lg/9511007
 
 [5] C. Pesquita, D. Faria, A. O. Falcão, P. Lord, and F. M. Couto,
 "Semantic Similarity in Biomedical Ontologies,"
@@ -143,8 +143,7 @@ doi: 10.1186/1471-2105-15-248
 Data Processing." [Online].
 Available: https://ohjelmointi-26.mooc.fi/osa-7/4-datan-kasittely
 
-[8] University of Helsinki, "Algorithms and Artificial
-Intelligence Lab." [Online].
+[8] University of Helsinki, "Algorithms and Artificial Intelligence Project." [Online].
 Available: https://algolabra-hy.github.io/
 
 [9] University of Helsinki, "Software Engineering."
