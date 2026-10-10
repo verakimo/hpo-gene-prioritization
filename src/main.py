@@ -1,8 +1,8 @@
 """Provides the command-line interface for phenotype-driven gene prioritization.
 
-Loads entered by user patient's HPO profile, HPO ontology data and
+Loads the patient's HPO profile entered by the user, HPO ontology data, and
 gene-to-phenotype annotation data, propagates gene annotations,
-calculates Information Content values of propagated annotations,
+calculates Information Content values for propagated annotations,
 calculates phenotype-profile similarity scores, ranks candidate genes, and
 displays the top results for the patient's HPO phenotype profile in a
 user-friendly manner.
@@ -22,8 +22,8 @@ TOP_RESULTS = 10
 
 
 def main():
-    """Runs the gene-prioritization pipeline for entered patient's HPO profile
-    and displays the top candidates.
+    """Runs the gene-prioritization pipeline for the patient's HPO profile
+    and displays the top candidate genes.
     """
     user_input = input(
         "Enter the patient's phenotype terms as Human Phenotype Ontology (HPO) IDs "
