@@ -103,7 +103,7 @@ The output could also be extended so that the ranked results could be saved to a
 
 **DeepL** was used a few times to translate individual words in the project's docstrings.
 
-**AI Tutor (Python Tutor)** was used to understand a bug in the `information_content()` function.
+**AI Tutor on Python Tutor (pythontutor.com)** was used to understand a bug in the `information_content()` function.
 
 **GitHub Copilot** was used to generate commit messages when making changes directly on GitHub.
 
