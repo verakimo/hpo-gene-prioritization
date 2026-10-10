@@ -25,7 +25,7 @@ Download `hp.obo` from:
 
 [HPO ontology download](https://obofoundry.org/ontology/hp)
 
-Place the file here:
+Place the file `hp.obo` here:
 
 ```text
 data/hp.obo
@@ -33,11 +33,11 @@ data/hp.obo
 
 ### Gene-to-phenotype annotations
 
-Download `genes_to_phenotype.txt` from:
+Download `hp/genes_to_phenotype.txt` from:
 
 [Gene-to-phenotype annotations](https://obofoundry.org/ontology/hp)
 
-Place the file here:
+Place the file `genes_to_phenotype.txt` here:
 
 ```text
 data/genes_to_phenotype.txt
@@ -103,9 +103,7 @@ PYTHONPATH=src poetry run python -m pylint src
 
 The empirical validation uses solved cases from the **Phenopacket Store**.
 
-Download a Phenopacket Store release from:
-
-[Phenopacket Store download link](https://github.com/monarch-initiative/phenopacket-store/releases/latest/download/all_phenopackets.zip)
+Download a Phenopacket Store release from [Phenopacket Store](https://github.com/monarch-initiative/phenopacket-store/tree/main) or click [here](https://github.com/monarch-initiative/phenopacket-store/releases/latest/download/all_phenopackets.zip) for direct downloading.
 
 Extract the downloaded release into:
 
@@ -119,10 +117,10 @@ For example, release `0.1.27` should have the following structure:
 real_case_validation/
 ├── benchmark_data/
 │   └── 0.1.27/
+│       ├── 11q_terminal_deletion/
+│       ├── AAGAB/
 │       ├── ABCA4/
-│       ├── F8/
-│       ├── GALT/
-│       ├── OCA2/
+│       ├── ABCB7/
 │       └── ...
 └── run_validation.py
 ```

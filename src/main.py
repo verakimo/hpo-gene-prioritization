@@ -1,7 +1,8 @@
 """Provides the command-line interface for phenotype-driven gene prioritization.
 
-Loads HPO ontology and gene-to-phenotype annotation data, propagates gene
-annotations, calculates Information Content values of propagated annotations,
+Loads entered by user patient's HPO profile, HPO ontology data and
+gene-to-phenotype annotation data, propagates gene annotations,
+calculates Information Content values of propagated annotations,
 calculates phenotype-profile similarity scores, ranks candidate genes, and
 displays the top results for the patient's HPO phenotype profile in a
 user-friendly manner.
@@ -21,18 +22,60 @@ TOP_RESULTS = 10
 
 
 def main():
-    """Runs the gene-prioritization pipeline and displays the top candidates."""
-    parents = parse_obo(HPO_FILE)
-    ontology = Ontology(parents)
-    gene_annotations = parse_gene_annotations(GENE_ANNOTATION_FILE)
+    """Runs the gene-prioritization pipeline for entered patient's HPO profile
+    and displays the top candidates.
+    """
+    user_input = input(
+        "Enter the patient's phenotype terms as Human Phenotype Ontology (HPO) IDs "
+        "separated by spaces (e.g. HP:0002460 HP:0002451): "
+    )
+    while not user_input.strip():
+        print("Error: No HPO terms were entered.")
+        user_input = input(
+            "Please enter HPO IDs separated by spaces (or stop the program by pressing Ctrl + C): "
+        )
+
+    patient_profile = set(user_input.split())
+
+    for term in patient_profile:
+        if not term.startswith("HP:") or len(term) != 10 or not term[3:].isdigit():
+            print(
+                f"Error: HPO term '{term}' was not entered in the correct HPO identifier format.\n"
+                "Please try to run the program again."
+            )
+            return
+
+    try:
+        parents = parse_obo(HPO_FILE)
+        ontology = Ontology(parents)
+    except FileNotFoundError as error:
+        print(
+            f"Error: Required data file {error.filename} was not found.\n"
+            "Please check the User Guide for instructions on downloading "
+            "the required data files. And try to run the program again."
+        )
+        return
+
+    for term in patient_profile:
+        if term not in ontology.parents:
+            print(
+                f"Error: Your HPO term '{term}' was not found in the ontology.\n"
+                "Try to run the program again."
+            )
+            return
+
+    try:
+        gene_annotations = parse_gene_annotations(GENE_ANNOTATION_FILE)
+    except FileNotFoundError as error:
+        print(
+            f"Error: Required data file {error.filename} was not found.\n"
+            "Please check the User Guide for instructions on downloading "
+            "the required data files. And try to run the program again."
+        )
+        return
 
     propagated_annotations = propagate_all_annotations(gene_annotations, ontology)
     ic_values = information_content(propagated_annotations)
-
-    user_input = input(
-    "Enter the patient's phenotype terms as Human Phenotype Ontology (HPO) IDs " \
-    "separated by spaces (e.g. HP:0002460 HP:0002451): ")
-    patient_profile = set(user_input.split())
 
     gene_scores = score_genes(
         patient_profile,
