@@ -20,3 +20,4 @@ For installation, required data files, running the program, tests, coverage, and
 - [Weekly Report 3](documentation/weekly_reports/weekly_report_3.md)
 - [Weekly Report 4](documentation/weekly_reports/weekly_report_4.md)
 - [Weekly Report 5](documentation/weekly_reports/weekly_report_5.md)
+- [Weekly Report 6](documentation/weekly_reports/weekly_report_6.md)
