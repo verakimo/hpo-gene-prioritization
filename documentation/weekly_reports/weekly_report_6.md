@@ -34,4 +34,4 @@ Nothing remains particularly unclear at this point.
 
 ## Time spent
 
-This week, I spent **3 hours and 45 minutes** working on the course project.
+This week, I spent **4 hours** working on the course project.
