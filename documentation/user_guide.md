@@ -1,7 +1,12 @@
 # User Guide
 
 ## Installation
+### Requirements
 
+- Python 3.11 or newer (but lower than Python 4.0)
+- Poetry
+
+### Cloning the repository
 Clone the repository and move to the project directory:
 
 ```bash
@@ -9,14 +14,9 @@ git clone https://github.com/verakimo/hpo-gene-prioritization.git
 cd hpo-gene-prioritization
 ```
 
-## Requirements
+### Installing Dependencies
 
-- Python 3.11 or newer (but lower than Python 4.0)
-- Poetry
-
-## Installing Poetry
-
-Install the dependencies with Poetry:
+Install the project dependencies with Poetry:
 
 ```bash
 poetry install
@@ -40,11 +40,11 @@ data/hp.obo
 
 ### Gene-to-phenotype annotations
 
-Download `hp/genes_to_phenotype.txt` from:
+Download the HPO gene-to-phenotype annotation file (`hp/genes_to_phenotype.txt` on the HPO website) from:
 
 [Gene-to-phenotype annotations](https://obofoundry.org/ontology/hp)
 
-Place the file `genes_to_phenotype.txt` here:
+The downloaded file is named `genes_to_phenotype.txt`. Place the file `genes_to_phenotype.txt` here:
 
 ```text
 data/genes_to_phenotype.txt
@@ -71,14 +71,15 @@ The input is a patient phenotype profile consisting of valid **HPO IDs**.
 For example:
 
 ```text
-HP:0003707
-HP:0003391
-HP:0003551
+HP:0003707 HP:0003391 HP:0003551
 ```
+The HPO IDs must be separated by spaces. The program compares the patient phenotype profile with gene-associated HPO profiles and prints the top-ranked candidate genes with their similarity scores.
 
-The program compares the patient phenotype profile with gene-associated HPO profiles and prints the top-ranked candidate genes with their similarity scores.
+## Running the Tests
 
-## Running the Unit Tests
+For details about the test cases, coverage, and empirical validation, see the [Testing Document](testing_document.md).
+
+### Running the Unit Tests
 
 Run all unit tests:
 
@@ -86,9 +87,7 @@ Run all unit tests:
 PYTHONPATH=src poetry run python -m unittest discover -s tests -p "test_*.py" -v
 ```
 
-For details about the test cases, coverage, and empirical validation, see the [Testing Document](testing_document.md).
-
-## Test Coverage
+### Test Coverage
 
 Run branch coverage:
 
@@ -98,7 +97,7 @@ PYTHONPATH=src poetry run coverage run --branch --source=src -m unittest discove
 poetry run coverage report -m
 ```
 
-## Pylint
+### Pylint
 
 Run Pylint for the source modules:
 
@@ -106,11 +105,11 @@ Run Pylint for the source modules:
 PYTHONPATH=src poetry run python -m pylint src
 ```
 
-## Real-Case Validation
+### Real-Case Validation
 
 The empirical validation uses solved cases from the **Phenopacket Store**.
 
-Download a Phenopacket Store release from [Phenopacket Store](https://github.com/monarch-initiative/phenopacket-store/tree/main) or click [here](https://github.com/monarch-initiative/phenopacket-store/releases/latest/download/all_phenopackets.zip) for direct downloading.
+Download a Phenopacket Store release from [Phenopacket Store](https://github.com/monarch-initiative/phenopacket-store/tree/main) or use this [direct download link](https://github.com/monarch-initiative/phenopacket-store/releases/latest/download/all_phenopackets.zip).
 
 Extract the downloaded release into:
 
