@@ -40,7 +40,7 @@ data/hp.obo
 
 ### Gene-to-phenotype annotations
 
-Download the HPO gene-to-phenotype annotation file (`hp/genes_to_phenotype.txt` on the HPO website) from:
+Download the HPO gene-to-phenotype annotation file (`hp/genes_to_phenotype.txt` on the OBO Foundry page) from:
 
 [Gene-to-phenotype annotations](https://obofoundry.org/ontology/hp)
 
