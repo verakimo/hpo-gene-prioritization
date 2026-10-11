@@ -33,7 +33,8 @@ p(t) =
 {\text{total number of annotated genes}}.
 $$
 
-The gene counts are based on the propagated gene annotations [4].
+The gene counts are based on the propagated gene annotations [4]. For exampple, for the root term, all annotated genes are propagated to it, so
+\(p(t) = 1\) and its IC value is \(IC(t) = 0\). More specific HPO terms are annotated to fewer genes and therefore have higher IC values.
 
 ### 2. Semantic Similarity
 
