@@ -15,7 +15,7 @@ In `hpo_parser.py`, the HPO ontology is parsed from `hp.obo` into a representati
 
 In `gene_annotation_parser.py`, the `genes_to_phenotype.txt` file is parsed into a dictionary that maps each gene to a set of directly annotated HPO terms [1-2].
 
-The `Ontology` class in `ontology.py` uses Depth-First Search (DFS) to find all ancestors of an HPO term up to the root of the ontology (the root of the DAG). Previously calculated ancestor sets are cached to avoid repeating the same searches [3].
+The `Ontology` class in `ontology.py` uses Depth-First Search (DFS) to find all ancestors of an HPO term up to the root of the ontology. The resulting ancestor-or-self set contains both the HPO term itself and all of its ancestors. Previously calculated ancestor-or-self sets are cached to avoid repeating the same searches [3].
 
 In `annotation_propagation.py`, the direct HPO annotations of each gene are propagated so that the gene profile also contains the ancestors of its directly annotated terms.
 
@@ -37,9 +37,9 @@ The gene counts are based on the propagated gene annotations [4].
 
 ### 2. Semantic Similarity
 
-The second stage compares the patient's HPO phenotype profile with the propagated phenotype profile of each gene.
+The second stage compares the patient's HPO phenotype profile with the propagated phenotype profile of each gene using pairwise semantic similarity between HPO terms.
 
-In `semantic_similarity.py`, Resnik similarity is calculated for pairs of HPO terms. For two terms, their Most Informative Common Ancestor is selected from their common ancestors. The MICA is the common ancestor with the highest IC value. Resnik similarity is then defined as the IC value of this MICA [4-5].
+In `semantic_similarity.py`, Resnik similarity is used as a node-based semantic similarity measure. For each pair of HPO terms, their Most Informative Common Ancestor is selected from their common ancestors. The MICA is the common ancestor with the highest IC value, and the pairwise Resnik similarity is defined as the IC value of this MICA [4-5].
 
 To compare complete phenotype profiles, the program uses symmetric BMA [5-6]:
 
@@ -59,13 +59,13 @@ $$
 
 where $P$ is the patient's phenotype profile and $G$ is the gene phenotype profile.
 
-The first directional average finds the best matching gene term for every patient term, while the second finds the best matching patient term for every gene term. Their average gives the final symmetric BMA score. This score represents how similar a gene's phenotype profile is to the patient's phenotype profile.
+The first directional average finds the best pairwise similarity for every patient term by comparing it with all terms in the gene profile. The second directional average finds the best pairwise similarity for every gene term by comparing it with all terms in the patient profile. Their average gives the final symmetric BMA score. This score represents how similar a gene's phenotype profile is to the patient's phenotype profile.
 
 ### 3. Gene Prioritization and Output
 
-In `gene_ranking.py`, a BMA score is calculated for every candidate gene. The scores are stored in a dictionary that maps each gene to its BMA score, and the genes are then sorted in descending order of similarity.
+In `gene_ranking.py`, a BMA score is calculated for every gene in the gene-to-phenotype annotation dataset. The scores are stored in a dictionary that maps each gene to its BMA score, and the genes are then sorted in descending order of similarity.
 
-The ranked results are enriched with the gene's rank, BMA score, and phenotype annotations. Finally, `main.py` formats the results into a user-friendly command-line output and displays the ten highest-ranked candidate genes for the phenotype profile provided by the user.
+The ranked results are enriched with the gene's rank, BMA score, and phenotype annotations. Finally, `main.py` formats the results into a user-friendly command-line output and displays the ten highest-ranked candidate genes for the phenotype profile provided by the user. The highest-ranked genes are presented as candidate causal genes.
 
 ### Implementation Resources
 
