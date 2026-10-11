@@ -9,6 +9,13 @@ git clone https://github.com/verakimo/hpo-gene-prioritization.git
 cd hpo-gene-prioritization
 ```
 
+## Requirements
+
+- Python 3.11 or newer (but lower than Python 4.0)
+- Poetry
+
+## Installing Poetry
+
 Install the dependencies with Poetry:
 
 ```bash
