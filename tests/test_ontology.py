@@ -2,7 +2,7 @@ import unittest
 
 from ontology import Ontology
 
-TOY_PARENTS = {
+TEST_PARENTS = {
     "ROOT": set(),
     "A": {"ROOT"},
     "B": {"ROOT"},
@@ -12,7 +12,7 @@ TOY_PARENTS = {
 
 class TestOntology(unittest.TestCase):
     def setUp(self):
-        self.ontology = Ontology(TOY_PARENTS)
+        self.ontology = Ontology(TEST_PARENTS)
 
     def test_ancestors_result(self):
         actual = self.ontology.get_ancestors("D")

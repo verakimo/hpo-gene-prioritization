@@ -89,7 +89,7 @@ The ontology requires O(V + E) space. Cached ancestor sets may require up to O(V
 
 The program prioritizes candidate genes based on phenotypic similarity, but it does not identify specific disease-causing alleles or genetic variants. A possible future improvement would be to integrate genetic variant data and extend the program to variant-level prioritization.
 
-Another possible extension would be to include the `genes_to_disease.txt` file [15], which could be used to map prioritized genes to associated disease identifiers, such as OMIM IDs.
+Another possible extension would be to include the `genes_to_disease.txt` file [15], which could be used to map prioritized genes to associated disease identifiers, such as OMIM IDs, if the user's goal is to investigate possible disease associations. This would be useful because the current program prioritizes genes based on phenotype similarity, but the phenotypes and genes involved do not necessarily correspond directly to a specific disease.
 
 The output could also be extended so that the ranked results could be saved to a file, for example in `.txt` or `.json` format, instead of being displayed only in the command-line interface.
 
@@ -104,7 +104,7 @@ The output could also be extended so that the ranked results could be saved to a
 
 **DeepL** was used a few times to translate individual words in the project's docstrings.
 
-**AI Tutor on Python Tutor (pythontutor.com)** was used to understand a bug in the `information_content()` function.
+**AI Tutor on Python Tutor (pythontutor.com)** was used to understand a bug in the `calculate_information_content()` function.
 
 **GitHub Copilot** was used to generate commit messages when making changes directly on GitHub.
 

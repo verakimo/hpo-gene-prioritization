@@ -2,8 +2,8 @@
 
 import math
 
-def information_content(propagated_annotations):
-    """Computes Information Content for HPO terms
+def calculate_information_content(propagated_annotations):
+    """Calculates Information Content values for HPO terms
     from propagated gene annotations.
 
     Args:

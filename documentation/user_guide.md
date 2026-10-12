@@ -6,7 +6,7 @@
 - Python 3.11 or newer (but lower than Python 4.0)
 - Poetry
 
-### Cloning the repository
+### Cloning the Repository
 Clone the repository and move to the project directory:
 
 ```bash
@@ -26,7 +26,7 @@ poetry install
 
 The program requires two HPO data files. They are not included in the repository and must be downloaded separately.
 
-### HPO ontology
+### HPO Ontology
 
 Download `hp.obo` from:
 
@@ -38,7 +38,7 @@ Place the file `hp.obo` here:
 data/hp.obo
 ```
 
-### Gene-to-phenotype annotations
+### Gene-to-Phenotype Annotations
 
 Download the HPO gene-to-phenotype annotation file (`hp/genes_to_phenotype.txt` on the OBO Foundry page) from:
 

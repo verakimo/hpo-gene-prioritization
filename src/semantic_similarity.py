@@ -1,10 +1,10 @@
-"""Calculate semantic similarity between HPO terms and phenotype profiles.
+"""Calculates semantic similarity between HPO terms and phenotype profiles.
 
-This module implements MICA and Resnik similarity for individual HPO terms
-and symmetric Best Match Average (BMA) for comparing phenotype profiles.
+This module implements MICA selection and the Resnik similarity measure for pairs
+of HPO terms, and symmetric Best Match Average (BMA) for comparing phenotype profiles.
 """
 
-def mica(term_1, term_2, ic_values, ontology):
+def select_mica(term_1, term_2, ic_values, ontology):
     """Selects Most Informative Common Ancestor for two HPO terms.
 
     Args:
@@ -35,9 +35,9 @@ def mica(term_1, term_2, ic_values, ontology):
     return result
 
 
-def resnik(term_1, term_2, ic_values, ontology):
-    """Returns Resnik semantic similarity measure for selected
-    most informative common ancestor for two HPO terms.
+def calculate_resnik(term_1, term_2, ic_values, ontology):
+    """Calculates Resnik semantic similarity measure for selected
+    Most Informative Common Ancestor for two HPO terms.
 
     Args:
         term_1: HPO term.
@@ -50,14 +50,14 @@ def resnik(term_1, term_2, ic_values, ontology):
         Information Content value of the HPO term
         selected by the MICA technique.
     """
-    result = mica(term_1, term_2, ic_values, ontology)
+    result = select_mica(term_1, term_2, ic_values, ontology)
     return ic_values[result]
 
 
-def symmetric_bma(patient_phenotype_profile, gene_phenotype_profile, ic_values, ontology):
-    """Computes pairwise Resnik similarities between patient and gene phenotype terms,
+def calculate_symmetric_bma(patient_phenotype_profile, gene_phenotype_profile, ic_values, ontology):
+    """Calculates pairwise Resnik similarities between patient and gene phenotype terms,
     selects the best matches in both directions,
-    and computes the symmetric Best Match Average.
+    and calculates the symmetric Best Match Average.
 
     Args:
         patient_phenotype_profile: Patient's human ontology phenotype profile.
@@ -74,7 +74,7 @@ def symmetric_bma(patient_phenotype_profile, gene_phenotype_profile, ic_values, 
     for patient_term in patient_phenotype_profile:
         maximum = 0
         for gene_term in gene_phenotype_profile:
-            resnik_value = resnik(patient_term, gene_term, ic_values, ontology)
+            resnik_value = calculate_resnik(patient_term, gene_term, ic_values, ontology)
             maximum = max(maximum, resnik_value)
         patient_side_best_matches.append(maximum)
     average_patient_side_best_matches = sum(
@@ -84,7 +84,7 @@ def symmetric_bma(patient_phenotype_profile, gene_phenotype_profile, ic_values, 
     for gene_term in gene_phenotype_profile:
         maximum = 0
         for patient_term in patient_phenotype_profile:
-            resnik_value = resnik(gene_term, patient_term, ic_values, ontology)
+            resnik_value = calculate_resnik(gene_term, patient_term, ic_values, ontology)
             maximum = max(maximum, resnik_value)
         gene_side_best_matches.append(maximum)
     average_gene_side_best_matches = sum(

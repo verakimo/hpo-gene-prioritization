@@ -1,10 +1,10 @@
 import unittest
 
-from semantic_similarity import symmetric_bma
+from semantic_similarity import calculate_symmetric_bma
 from ontology import Ontology
 
-PATIENT_TOY_PHENOTYPE_PROFILE = {"C", "B"}
-GENE_TOY_PHENOTYPE_PROFILE = {"D", "A"}
+PATIENT_TEST_PHENOTYPE_PROFILE = {"C", "B"}
+GENE_TEST_PHENOTYPE_PROFILE = {"D", "A"}
 
 EMPTY_PATIENT_PHENOTYPE_PROFILE = set()
 EMPTY_GENE_PHENOTYPE_PROFILE = set()
@@ -17,7 +17,7 @@ IC_VALUES = {
     "B": 0.5849625007211563
 }
 
-TOY_PARENTS = {
+TEST_PARENTS = {
     "ROOT": set(),
     "A": {"ROOT"},
     "B": {"ROOT"},
@@ -27,12 +27,12 @@ TOY_PARENTS = {
 
 class TestSymmetricBMA(unittest.TestCase):
     def setUp(self):
-        self.ontology = Ontology(TOY_PARENTS)
+        self.ontology = Ontology(TEST_PARENTS)
 
     def test_bma_normal_case(self):
-        actual = symmetric_bma(
-            PATIENT_TOY_PHENOTYPE_PROFILE,
-            GENE_TOY_PHENOTYPE_PROFILE,
+        actual = calculate_symmetric_bma(
+            PATIENT_TEST_PHENOTYPE_PROFILE,
+            GENE_TEST_PHENOTYPE_PROFILE,
             IC_VALUES,
             self.ontology
             )
@@ -41,7 +41,7 @@ class TestSymmetricBMA(unittest.TestCase):
 
     def test_bma_with_both_profiles_empty(self):
         with self.assertRaises(ValueError):
-            symmetric_bma(
+            calculate_symmetric_bma(
                 EMPTY_PATIENT_PHENOTYPE_PROFILE,
                 EMPTY_GENE_PHENOTYPE_PROFILE,
                 IC_VALUES,
@@ -50,8 +50,8 @@ class TestSymmetricBMA(unittest.TestCase):
 
     def test_bma_with_gene_profile_empty(self):
         with self.assertRaises(ValueError):
-            symmetric_bma(
-                PATIENT_TOY_PHENOTYPE_PROFILE,
+            calculate_symmetric_bma(
+                PATIENT_TEST_PHENOTYPE_PROFILE,
                 EMPTY_GENE_PHENOTYPE_PROFILE,
                 IC_VALUES,
                 self.ontology

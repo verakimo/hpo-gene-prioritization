@@ -31,7 +31,7 @@ UNRANKED_GENE_SCORES = {
     'g2': 0.5849625007211563
 }
 
-TOY_PARENTS = {
+TEST_PARENTS = {
     "ROOT": set(),
     "A": {"ROOT"},
     "B": {"ROOT"},
@@ -42,7 +42,7 @@ TOY_PARENTS = {
 
 class TestGeneRanking(unittest.TestCase):
     def setUp(self):
-        self.ontology = Ontology(TOY_PARENTS)
+        self.ontology = Ontology(TEST_PARENTS)
 
     def test_score_genes(self):
         actual = score_genes(PATIENT_PROFILE, GENE_PROFILES, IC_VALUES, self.ontology)

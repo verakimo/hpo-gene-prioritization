@@ -12,7 +12,7 @@ from annotation_propagation import propagate_all_annotations
 from gene_annotation_parser import parse_gene_annotations
 from gene_ranking import sort_genes, rich_output, score_genes
 from hpo_parser import parse_obo
-from information_content import information_content
+from information_content import calculate_information_content
 from ontology import Ontology
 
 
@@ -75,7 +75,7 @@ def main():
         return
 
     propagated_annotations = propagate_all_annotations(gene_annotations, ontology)
-    ic_values = information_content(propagated_annotations)
+    ic_values = calculate_information_content(propagated_annotations)
 
     gene_scores = score_genes(
         patient_profile,

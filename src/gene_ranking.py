@@ -1,6 +1,6 @@
 """Provides phenotype-based gene scoring, ranking, and output formatting."""
 
-from semantic_similarity import symmetric_bma
+from semantic_similarity import calculate_symmetric_bma
 
 def score_genes(patient_phenotype_profile, gene_phenotype_profiles, ic_values, ontology):
     """Computes symmetric BMA for patient phenotype profile and genes in gene phenotype profiles.
@@ -16,7 +16,7 @@ def score_genes(patient_phenotype_profile, gene_phenotype_profiles, ic_values, o
     """
     gene_scores = {}
     for gene in gene_phenotype_profiles:
-        gene_scores[gene] = symmetric_bma(
+        gene_scores[gene] = calculate_symmetric_bma(
             patient_phenotype_profile,
             gene_phenotype_profiles[gene],
             ic_values,

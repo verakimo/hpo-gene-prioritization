@@ -2,7 +2,7 @@ import unittest
 
 from ontology import Ontology
 
-TOY_PARENTS = {
+TEST_PARENTS = {
     "ROOT": set(),
     "A": {"ROOT"},
     "B": {"ROOT"},
@@ -12,7 +12,7 @@ TOY_PARENTS = {
 
 class TestMemoization(unittest.TestCase):
     def setUp(self):
-        self.ontology = Ontology(TOY_PARENTS)
+        self.ontology = Ontology(TEST_PARENTS)
 
     def test_ancestor_cache(self):
         self.ontology.ancestor_cache.clear()

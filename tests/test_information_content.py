@@ -1,6 +1,6 @@
 import unittest
 
-from information_content import information_content
+from information_content import calculate_information_content
 
 PROPAGATED_ANNOTATIONS = {
     "g1": {"C", "A", "ROOT"},
@@ -9,8 +9,8 @@ PROPAGATED_ANNOTATIONS = {
 }
 
 class TestInformationContent(unittest.TestCase):
-    def test_information_content(self):
-        actual = information_content(PROPAGATED_ANNOTATIONS)
+    def test_calculate_information_content(self):
+        actual = calculate_information_content(PROPAGATED_ANNOTATIONS)
         expected = {
             'ROOT': -0.0,
             'A': 0.5849625007211563,
@@ -22,7 +22,7 @@ class TestInformationContent(unittest.TestCase):
         for term in expected:
             self.assertAlmostEqual(actual[term], expected[term])
 
-    def test_information_content_for_empty_dataset(self):
-        actual = information_content({})
+    def test_calculate_information_content_for_empty_dataset(self):
+        actual = calculate_information_content({})
         expected = {}
         self.assertEqual(actual, expected)
