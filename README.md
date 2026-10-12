@@ -1,8 +1,8 @@
 # HPO-Based Gene Prioritization
 
-A Python project for phenotype-driven prioritization of disease-associated genes using Human Phenotype Ontology (HPO) terms.
+A Python project for phenotype-driven gene prioritization using Human Phenotype Ontology (HPO) terms.
 
-The program compares a patient's HPO phenotype profile with gene-associated phenotype profiles using ontology-based semantic similarity. The main algorithm uses **Information Content**, **MICA**, **Resnik similarity**, and **symmetric Best Match Average (BMA)** to calculate similarity scores and rank candidate genes.
+The program compares a patient's HPO phenotype profile with gene-associated phenotype profiles using ontology-based semantic similarity. The main algorithm uses **Information Content**, **MICA**, **Resnik similarity**, and **symmetric Best Match Average (BMA)** to calculate similarity scores and rank genes.
 
 For installation, required data files, running the program, tests, coverage, and real-case validation, see the [User Guide](documentation/user_guide.md).
 
