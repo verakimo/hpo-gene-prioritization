@@ -1,7 +1,7 @@
 """Provides functions for parsing HPO ontology data from OBO files."""
 
 def parse_obo(file_path):
-    """Parse HPO parent relationships from an OBO file.
+    """Parses HPO parent relationships from an OBO file.
 
     Args:
         file_path: Path to the HPO OBO file.

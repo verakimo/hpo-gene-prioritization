@@ -35,11 +35,11 @@ p(t) =
 $$
 
 The gene counts are based on the propagated gene annotations [4]. For exampple, for the root term, all annotated genes are propagated to it, so
-\(p(t) = 1\) and its IC value is \(IC(t) = 0\). More specific HPO terms are annotated to fewer genes and therefore have higher IC values.
+p(t) = 1 and its IC value is IC(t) = 0. More specific HPO terms are annotated to fewer genes and therefore have higher IC values.
 
 ### 2. Semantic Similarity
 
-The second stage compares the patient's HPO phenotype profile with the propagated phenotype profile of each gene using pairwise semantic similarity between HPO terms.
+The second stage compares the patient's HPO phenotype profile with the phenotype profile of each gene using pairwise semantic similarity between HPO terms.
 
 In `semantic_similarity.py`, Resnik similarity is used as a node-based semantic similarity measure. For each pair of HPO terms, their Most Informative Common Ancestor is selected from their common ancestors. The MICA is the common ancestor with the highest IC value, and the pairwise Resnik similarity is defined as the IC value of this MICA [4-5].
 

@@ -1,7 +1,7 @@
 """Provides functions for parsing gene-to-phenotype annotation data."""
 
 def parse_gene_annotations(file_path):
-    """Parse gene-to-phenotype annotations from a tab-separated text file.
+    """Parses gene-to-phenotype annotations from a tab-separated text file.
 
     Args:
         file_path: Path to the gene-to-phenotype annotation file.
